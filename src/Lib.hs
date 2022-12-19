@@ -51,15 +51,16 @@ instance GHC.Read.Read InputData where
  
 chOption 1 xs ys = do
                 let (a,b,sigm) = mnk xs ys
-                putStrLn $ "\na=" ++ show a
-                putStrLn $ "b=" ++ show b
-                putStrLn $ "sigm=" ++ show sigm
+                showans a b sigm
 chOption 2 xs ys = do
                 let (a,b,sigm) = exponential xs ys
+                showans a b sigm
+chOption _ xs ys = putStr $ "Error choosing option, cancelling..."
+
+showans a b sigm = do
                 putStrLn $ "\na=" ++ show a
                 putStrLn $ "b=" ++ show b
                 putStrLn $ "sigm=" ++ show sigm
-chOption _ xs ys = putStr $ "Error choosing option, cancelling..."
 
 work :: IO ()
 work = do
